@@ -22,7 +22,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestAssignment/HTTPServer/HTTPServer.m"
@@ -63,132 +63,6 @@
             endingLineNumber = "22"
             landmarkName = "-startResponse"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestAssignment/HTTPClient/CBHttpClient.m"
-            timestampString = "504113440.682062"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-sendRequest:withHttpExecutor:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBHTTPClient sendRequest:]"
-                  moduleName = "TestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestAssignment/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504044274.706743"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "131">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__28-[CBHTTPClient sendRequest:]_block_invoke"
-                  moduleName = "TestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestAssignment/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504044274.707996"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "87">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBHTTPClient sendRequest:]"
-                  moduleName = "TestAssignmentTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestAssignment/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504044274.771067"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "59"
-                  endingLineNumber = "59"
-                  offsetFromSymbolStart = "131">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__28-[CBHTTPClient sendRequest:]_block_invoke"
-                  moduleName = "TestAssignmentTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestAssignment/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504044274.772546"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "87">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestAssignment/HTTPClient/CBHttpClient.m"
-            timestampString = "504113440.682062"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-sendRequest:withHttpExecutor:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__28-[CBHTTPClient sendRequest:]_block_invoke"
-                  moduleName = "TestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestAssignment/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504044274.713754"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "87">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__28-[CBHTTPClient sendRequest:]_block_invoke"
-                  moduleName = "TestAssignmentTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestAssignment/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504044274.774991"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "60"
-                  endingLineNumber = "60"
-                  offsetFromSymbolStart = "87">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -402,7 +276,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestAssignment/HTTPServer/HTTPResponseHandler.m"
@@ -482,7 +356,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestAssignment/HTTPServer/HTTPServer.m"
@@ -562,7 +436,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestAssignment/HTTPServer/HTTPResponseHandler.m"
@@ -578,7 +452,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TestAssignment/HTTPServer/HTTPResponseHandler.m"
@@ -770,102 +644,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TestAssignment/HTTPClient/CBHttpClient.m"
-            timestampString = "504113440.682062"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-performOnRequestCompletionWithData:statusCode:error:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBHTTPClient performOnRequestCompletionWithData:statusCode:error:]"
-                  moduleName = "TestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504073610.57514"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "662">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBHTTPClient performOnRequestCompletionWithData:statusCode:error:]"
-                  moduleName = "TestAssignmentTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504073610.584009"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "42"
-                  endingLineNumber = "42"
-                  offsetFromSymbolStart = "662">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestAssignment/HTTPClient/CBHttpClient.m"
-            timestampString = "504113440.682062"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-sendRequest:withHttpExecutor:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBHTTPClient sendRequest:withHttpExecutor:]"
-                  moduleName = "TestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504113940.469769"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "1305">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBHTTPClient sendRequest:withHttpExecutor:]"
-                  moduleName = "TestAssignmentTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504113940.509401"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "1305">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "TestAssignmentTests/CBHTTPClientTests.m"
             timestampString = "504113434.768424"
             startingColumnNumber = "9223372036854775807"
@@ -890,132 +668,6 @@
             endingLineNumber = "67"
             landmarkName = "-performRequest:requestMethod:requestParameters:httpHeaderFields:timeoutInterval:httpCallback:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestAssignment/HTTPClient/CBHttpClient.m"
-            timestampString = "504113890.446743"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "-sendRequest:withHttpExecutor:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBHTTPClient sendRequest:withHttpExecutor:]"
-                  moduleName = "TestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504113940.48393"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "1545">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[CBHTTPClient sendRequest:withHttpExecutor:]_block_invoke"
-                  moduleName = "TestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504113940.485501"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "118">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBHTTPClient sendRequest:withHttpExecutor:]"
-                  moduleName = "TestAssignmentTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504113940.518378"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "1545">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[CBHTTPClient sendRequest:withHttpExecutor:]_block_invoke"
-                  moduleName = "TestAssignmentTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504113940.520295"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "118">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TestAssignment/HTTPClient/CBHttpClient.m"
-            timestampString = "504113897.487523"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "-sendRequest:withHttpExecutor:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[CBHTTPClient sendRequest:withHttpExecutor:]_block_invoke"
-                  moduleName = "TestAssignment"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504113940.49297"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "118">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[CBHTTPClient sendRequest:withHttpExecutor:]_block_invoke"
-                  moduleName = "TestAssignmentTests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jenkins/Projects/TestRun/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
-                  timestampString = "504113940.522984"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "118">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
