@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CBHttpClient.h"
+#import "CBURLRequestImp.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +23,7 @@
     //test run.
     NSURL *url = [NSURL URLWithString:@"https://www.google.com.pk"];
     self.client = [[CBHTTPClient new] initWithURL:url requestTimeout:100.0 retryCount:5 delegate:self];
-    [self.client performSelector:@selector(sendRequest:) withObject:@{@"gws_rd":@"ssl", @"q":@"test it now"} afterDelay:1.0];
+    [self.client sendRequest:@{} withHttpExecutor:[CBURLRequestImp new]];
 }
 
 

@@ -10,7 +10,6 @@
 #import "CBHttpClient.h"
 #import "CBHttpServerController.h"
 #import "CBHTTPClientDelegate.h"
-#import "SimpleHttpServer.h"
 #import "DummyHttpExecutor.h"
 
 typedef enum : NSUInteger {
@@ -28,7 +27,6 @@ typedef void (^TestCallback)();
 @property CBHttpClientErrorTypes errorType;
 @property CBHttpClientErrorTypes expectedError;
 @property TestCallback callback;
-@property SimpleHttpServer *server;
 @end
 
 @implementation CBHTTPClientTests

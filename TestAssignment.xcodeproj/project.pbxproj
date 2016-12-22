@@ -17,7 +17,6 @@
 		A6E5032C1E0B155B0083186A /* CBHTTPClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E5032B1E0B155B0083186A /* CBHTTPClientTests.m */; };
 		A6E5033B1E0B197E0083186A /* CBHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E5031B1E0AFEC80083186A /* CBHttpClient.m */; };
 		A6E5033C1E0B19810083186A /* CBURLRequestImp.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E503181E0AF6820083186A /* CBURLRequestImp.m */; };
-		A6E503641E0B42D80083186A /* SimpleHttpServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E503631E0B42D80083186A /* SimpleHttpServer.m */; };
 		A6E503671E0B4B5A0083186A /* CBHttpServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E503661E0B4B5A0083186A /* CBHttpServerController.m */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +51,6 @@
 		A6E5031A1E0AFEC80083186A /* CBHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBHttpClient.h; path = HTTPClient/CBHttpClient.h; sourceTree = "<group>"; };
 		A6E5031B1E0AFEC80083186A /* CBHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBHttpClient.m; path = HTTPClient/CBHttpClient.m; sourceTree = "<group>"; };
 		A6E5032B1E0B155B0083186A /* CBHTTPClientTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHTTPClientTests.m; sourceTree = "<group>"; };
-		A6E503621E0B42D80083186A /* SimpleHttpServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleHttpServer.h; sourceTree = "<group>"; };
-		A6E503631E0B42D80083186A /* SimpleHttpServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleHttpServer.m; sourceTree = "<group>"; };
 		A6E503651E0B4B5A0083186A /* CBHttpServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHttpServerController.h; sourceTree = "<group>"; };
 		A6E503661E0B4B5A0083186A /* CBHttpServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHttpServerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,8 +121,6 @@
 				A6E503661E0B4B5A0083186A /* CBHttpServerController.m */,
 				A6E502FD1E0AF03F0083186A /* Info.plist */,
 				A6E5032B1E0B155B0083186A /* CBHTTPClientTests.m */,
-				A6E503621E0B42D80083186A /* SimpleHttpServer.h */,
-				A6E503631E0B42D80083186A /* SimpleHttpServer.m */,
 				A67BA7611E0B852A006C7929 /* DummyHttpExecutor.h */,
 				A67BA7621E0B852A006C7929 /* DummyHttpExecutor.m */,
 			);
@@ -269,7 +264,6 @@
 				A6E5033B1E0B197E0083186A /* CBHttpClient.m in Sources */,
 				A6E5033C1E0B19810083186A /* CBURLRequestImp.m in Sources */,
 				A6E503671E0B4B5A0083186A /* CBHttpServerController.m in Sources */,
-				A6E503641E0B42D80083186A /* SimpleHttpServer.m in Sources */,
 				A6E5032C1E0B155B0083186A /* CBHTTPClientTests.m in Sources */,
 				A67BA7631E0B852A006C7929 /* DummyHttpExecutor.m in Sources */,
 			);
