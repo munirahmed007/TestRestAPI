@@ -16,6 +16,6 @@
 - (void) requestOK:(NSData *)data;
 - (void) requestTryAgain:(CBHTTPClient *)client;
 - (void) requestTimeout:(CBHTTPClient *)client;
-- (void) requestFailed:(CBHTTPClient *)client;
+- (void) requestFailed:(CBHTTPClient *)client error:(NSError *)error;
 
 @end

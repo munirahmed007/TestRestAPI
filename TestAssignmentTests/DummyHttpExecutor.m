@@ -25,6 +25,11 @@
     self.returnType = CBHTTPServerError;
 }
 
+- (void) setReturnHttpOtherErrors
+{
+    self.returnType = CBHTTPOtherError;
+}
+
 - (void) setReturnHttpTimeout
 {
     self.returnType = CBHTTPTimeout;
@@ -53,6 +58,19 @@
                                          userInfo:userInfo];
         callback(nil, 0, error);
     }
+    else if (self.returnType == CBHTTPOtherError)
+    {
+        NSDictionary *userInfo = @{
+                                   NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil),
+                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Cannot Connect To server.", nil),
+                                   NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Have you tried turning it off and on again?", nil)
+                                   };
+        NSError *error = [NSError errorWithDomain:NSURLErrorDomain
+                                             code:-1002
+                                         userInfo:userInfo];
+        callback(nil, 0, error);
+    }
+
 }
 
 @end

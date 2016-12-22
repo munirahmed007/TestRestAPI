@@ -46,9 +46,27 @@ typedef void (^TestCallback)();
     [self.client sendRequest:@{} withHttpExecutor:executer];
 }
 
+- (void) testClientHttp_error_others
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"testClientHttp_error_Unknown"];
+    self.errorType = CBHTTPClient_noneError_Recv;
+    DummyHttpExecutor *execute = [DummyHttpExecutor new];
+    [execute setReturnHttpOtherErrors];
+    
+    self.expectedError = CBHTTPClient_OtherError_Recv;
+    
+    CBHTTPClientTests __weak *weakSelf = self;
+    
+    [self performAsyncOperationWithExecutor:execute Callback:^{
+        XCTAssertEqual(weakSelf.errorType, weakSelf.expectedError);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:15.0 handler:nil];
+}
+
 - (void) testClientHttp_timeout
 {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"testClientHttp_500"];
+    XCTestExpectation *expectation = [self expectationWithDescription:@"testClientHttp_timeout"];
     self.errorType = CBHTTPClient_noneError_Recv;
     DummyHttpExecutor *execute = [DummyHttpExecutor new];
     [execute setReturnHttpTimeout];
@@ -118,7 +136,7 @@ typedef void (^TestCallback)();
     self.callback();
 }
 
-- (void) requestFailed:(CBHTTPClient *)client
+- (void) requestFailed:(CBHTTPClient *)client error:(NSError *)error
 {
     self.errorType = CBHTTPClient_OtherError_Recv;
     self.callback();

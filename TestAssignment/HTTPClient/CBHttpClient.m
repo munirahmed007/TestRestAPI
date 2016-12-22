@@ -19,6 +19,9 @@
 @property         NSInteger  retryCount;
 @end
 
+NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
+
+
 @implementation CBHTTPClient
 
 //request completion handler
@@ -46,8 +49,8 @@
             }
         }
         else {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:)]){
-                [self.delegate requestFailed:self];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:error:)]){
+                [self.delegate requestFailed:self error:error];
             }
             
         }
@@ -72,8 +75,16 @@
     
     if (self.retryCount < 0)
     {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:)]){
-            [self.delegate requestFailed:self];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:error:)]){
+            NSDictionary *userInfo = @{
+                                       NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil),
+                                       NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"CBHTTPClient consumed all retries.", nil),
+                                       NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Operation was unsuccessful", nil)
+                                       };
+            NSError *error = [NSError errorWithDomain:CBHTTPClientErrorDomain
+                                                 code:-57
+                                             userInfo:userInfo];
+            [self.delegate requestFailed:self error:error];
         }
     }
     else {

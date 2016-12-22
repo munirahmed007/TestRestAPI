@@ -44,7 +44,7 @@
     
 }
 
-- (void) requestFailed:(CBHTTPClient *)client
+- (void) requestFailed:(CBHTTPClient *)client error:(NSError *)error
 {
     NSLog(@"request failed");
     
