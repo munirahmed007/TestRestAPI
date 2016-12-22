@@ -41,7 +41,7 @@
     {
         callback([NSData data], 500, nil);
     }
-    else if (self.returnType == CBHTTPServerError)
+    else if (self.returnType == CBHTTPTimeout)
     {
         NSDictionary *userInfo = @{
                                    NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil),

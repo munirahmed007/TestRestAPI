@@ -23,7 +23,7 @@
     //test run.
     NSURL *url = [NSURL URLWithString:@"https://www.google.com.pk"];
     self.client = [[CBHTTPClient new] initWithURL:url requestTimeout:100.0 retryCount:5 delegate:self];
-    [self.client sendRequest:@{} withHttpExecutor:[CBURLRequestImp new]];
+   // [self.client sendRequest:@{} withHttpExecutor:[CBURLRequestImp new]];
 }
 
 
