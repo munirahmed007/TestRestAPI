@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 #import "CBHttpClient.h"
-#import "CBHttpServerController.h"
 #import "CBHTTPClientDelegate.h"
 #import "DummyHttpExecutor.h"
 
@@ -54,9 +53,6 @@ typedef void (^TestCallback)();
     DummyHttpExecutor *execute = [DummyHttpExecutor new];
     [execute setReturnHttpTimeout];
    
-    
-    CBHttpServerController *ctrl = [CBHttpServerController sharedController];
-    ctrl.timeout = YES;
     self.expectedError = CBHTTPClient_Timeout_Recv;
 
     CBHTTPClientTests __weak *weakSelf = self;
@@ -76,10 +72,6 @@ typedef void (^TestCallback)();
     DummyHttpExecutor *execute = [DummyHttpExecutor new];
     [execute setReturnHttpInternalServerError];
     
-    
-    CBHttpServerController *ctrl = [CBHttpServerController sharedController];
-    ctrl.timeout = NO;
-    ctrl.statusCode = 500;
     self.expectedError = CBHTTPClient_500_Recv;
     CBHTTPClientTests __weak *weakSelf = self;
     
@@ -99,9 +91,6 @@ typedef void (^TestCallback)();
     DummyHttpExecutor *execute = [DummyHttpExecutor new];
     [execute setReturnHttpOK];
     
-    CBHttpServerController *ctrl = [CBHttpServerController sharedController];
-    ctrl.timeout = NO;
-    ctrl.statusCode = 200;
     self.expectedError = CBHTTPClient_200_Recv;
     CBHTTPClientTests __weak *weakSelf = self;
     
