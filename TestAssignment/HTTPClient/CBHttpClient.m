@@ -14,7 +14,7 @@
 @property (weak) id<CBHTTPClientDelegate> delegate;
 @property         NSURL *requestURL;
 @property         NSInteger timeout;
-@property         CBURLRequestImp *requestImp;
+@property         id<CBURLRequestProtocol> executor;
 @property         NSDictionary *parameters;
 @property         NSInteger  retryCount;
 @end
@@ -61,11 +61,11 @@
 }
 
 //execute request
--(void)sendRequest:(NSDictionary *)params
+-(void)sendRequest:(NSDictionary *)params withHttpExecutor:(id<CBURLRequestProtocol>)httpExecutor;
 {
-    self.requestImp = [CBURLRequestImp new];
     CBHTTPClient __weak *weakSelf = self;
     self.parameters = params;
+    self.executor = httpExecutor;
     
     //decrement retry count
     self.retryCount--;
@@ -77,7 +77,7 @@
         }
     }
     else {
-        [self.requestImp performRequest:self.requestURL requestMethod:CBHTTPMethodGet requestParameters:params  httpHeaderFields:@{}  timeoutInterval:self.timeout httpCallback:^(NSData *data, NSInteger responseCode, NSError *error) {
+        [self.executor performRequest:self.requestURL requestMethod:CBHTTPMethodGet requestParameters:params  httpHeaderFields:@{}  timeoutInterval:self.timeout httpCallback:^(NSData *data, NSInteger responseCode, NSError *error) {
             [weakSelf performOnRequestCompletionWithData:data statusCode:responseCode error:error];
         }];
     }
@@ -85,7 +85,7 @@
 
 -(void) retryRequest
 {
-    [self sendRequest:self.parameters];
+    [self sendRequest:self.parameters withHttpExecutor:self.executor];
 }
 
 //ctor

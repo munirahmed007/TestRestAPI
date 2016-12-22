@@ -11,6 +11,7 @@
 #import "CBHttpServerController.h"
 #import "CBHTTPClientDelegate.h"
 #import "SimpleHttpServer.h"
+#import "DummyHttpExecutor.h"
 
 typedef enum : NSUInteger {
     CBHTTPClient_200_Recv,
@@ -42,21 +43,19 @@ typedef void (^TestCallback)();
     [super tearDown];
  }
 
-- (void) performAsyncOperationWithCallback:(void (^)())cb
+- (void) performAsyncOperationWithExecutor:(id<CBURLRequestProtocol>)executer Callback:(void (^)())cb
 {
     self.callback = cb;
-    [self.client performSelector:@selector(sendRequest:) withObject:@{} afterDelay:1.5];
+    [self.client sendRequest:@{} withHttpExecutor:executer];
 }
 
 - (void) testClientHttp_timeout
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"testClientHttp_500"];
     self.errorType = CBHTTPClient_noneError_Recv;
+    DummyHttpExecutor *execute = [DummyHttpExecutor new];
+    [execute setReturnHttpTimeout];
    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        self.server = [SimpleHttpServer new];
-        [self.server startServer];
-    });
     
     CBHttpServerController *ctrl = [CBHttpServerController sharedController];
     ctrl.timeout = YES;
@@ -64,7 +63,7 @@ typedef void (^TestCallback)();
 
     CBHTTPClientTests __weak *weakSelf = self;
     
-    [self performAsyncOperationWithCallback:^{
+    [self performAsyncOperationWithExecutor:execute Callback:^{
         XCTAssertEqual(weakSelf.errorType, weakSelf.expectedError);
         [expectation fulfill];
     }];
@@ -76,10 +75,9 @@ typedef void (^TestCallback)();
     XCTestExpectation *expectation = [self expectationWithDescription:@"testClientHttp_500"];
     self.errorType = CBHTTPClient_noneError_Recv;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        self.server = [SimpleHttpServer new];
-        [self.server startServer];
-    });
+    DummyHttpExecutor *execute = [DummyHttpExecutor new];
+    [execute setReturnHttpInternalServerError];
+    
     
     CBHttpServerController *ctrl = [CBHttpServerController sharedController];
     ctrl.timeout = NO;
@@ -87,10 +85,11 @@ typedef void (^TestCallback)();
     self.expectedError = CBHTTPClient_500_Recv;
     CBHTTPClientTests __weak *weakSelf = self;
     
-    [self performAsyncOperationWithCallback:^{
+    [self performAsyncOperationWithExecutor:execute Callback:^{
         XCTAssertEqual(weakSelf.errorType, weakSelf.expectedError);
         [expectation fulfill];
     }];
+
     [self waitForExpectationsWithTimeout:15.0 handler:nil];
 }
 
@@ -99,10 +98,8 @@ typedef void (^TestCallback)();
     self.errorType = CBHTTPClient_noneError_Recv;
     XCTestExpectation *expectation = [self expectationWithDescription:@"testClientHttp_200"];
 
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        self.server = [SimpleHttpServer new];
-        [self.server startServer];
-    });
+    DummyHttpExecutor *execute = [DummyHttpExecutor new];
+    [execute setReturnHttpOK];
     
     CBHttpServerController *ctrl = [CBHttpServerController sharedController];
     ctrl.timeout = NO;
@@ -110,10 +107,11 @@ typedef void (^TestCallback)();
     self.expectedError = CBHTTPClient_200_Recv;
     CBHTTPClientTests __weak *weakSelf = self;
     
-    [self performAsyncOperationWithCallback:^{
+    [self performAsyncOperationWithExecutor:execute Callback:^{
         XCTAssertEqual(weakSelf.errorType, weakSelf.expectedError);
         [expectation fulfill];
     }];
+
  
     [self waitForExpectationsWithTimeout:15.0 handler:nil];
 }

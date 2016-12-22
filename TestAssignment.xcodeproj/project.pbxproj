@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A67BA7631E0B852A006C7929 /* DummyHttpExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = A67BA7621E0B852A006C7929 /* DummyHttpExecutor.m */; };
 		A6E502E91E0AF03F0083186A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E502E81E0AF03F0083186A /* AppDelegate.m */; };
 		A6E502EC1E0AF03F0083186A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E502EB1E0AF03F0083186A /* main.m */; };
 		A6E502EE1E0AF03F0083186A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E502ED1E0AF03F0083186A /* Assets.xcassets */; };
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A67BA7611E0B852A006C7929 /* DummyHttpExecutor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyHttpExecutor.h; sourceTree = "<group>"; };
+		A67BA7621E0B852A006C7929 /* DummyHttpExecutor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyHttpExecutor.m; sourceTree = "<group>"; };
 		A6E502E41E0AF03F0083186A /* TestAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E502E71E0AF03F0083186A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A6E502E81E0AF03F0083186A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				A6E5032B1E0B155B0083186A /* CBHTTPClientTests.m */,
 				A6E503621E0B42D80083186A /* SimpleHttpServer.h */,
 				A6E503631E0B42D80083186A /* SimpleHttpServer.m */,
+				A67BA7611E0B852A006C7929 /* DummyHttpExecutor.h */,
+				A67BA7621E0B852A006C7929 /* DummyHttpExecutor.m */,
 			);
 			path = TestAssignmentTests;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				A6E503671E0B4B5A0083186A /* CBHttpServerController.m in Sources */,
 				A6E503641E0B42D80083186A /* SimpleHttpServer.m in Sources */,
 				A6E5032C1E0B155B0083186A /* CBHTTPClientTests.m in Sources */,
+				A67BA7631E0B852A006C7929 /* DummyHttpExecutor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +453,7 @@
 				A6E5030D1E0AF03F0083186A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6E5030E1E0AF03F0083186A /* Build configuration list for PBXNativeTarget "TestAssignmentTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +462,7 @@
 				A6E503101E0AF03F0083186A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

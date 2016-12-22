@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "CBHTTPClientDelegate.h"
-
+#import "CBURLRequestProtocol.h"
 
 @interface CBHTTPClient : NSObject
 
--(void)sendRequest:(NSDictionary *)params;
+-(void)sendRequest:(NSDictionary *)params withHttpExecutor:(id<CBURLRequestProtocol>)httpExecutor;
 -(CBHTTPClient *) initWithURL:(NSURL *)url requestTimeout:(NSInteger)timeout retryCount:(NSInteger)retry delegate:(id<CBHTTPClientDelegate>) delegate;
 -(NSURL *) requestedURL;
 -(void) retryRequest;
