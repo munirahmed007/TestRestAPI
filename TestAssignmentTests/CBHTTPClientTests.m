@@ -34,7 +34,7 @@ typedef void (^TestCallback)();
 
 - (void)setUp {
     [super setUp];
-    self.client = [[CBHTTPClient new] initWithURL:[NSURL URLWithString:@"http://127.0.0.1:8080"] requestTimeout:10.0 delegate:self];
+    self.client = [[CBHTTPClient new] initWithURL:[NSURL URLWithString:@"http://127.0.0.1:8080"] requestTimeout:10.0  retryCount:5 delegate:self];
 }
 
 - (void)tearDown {

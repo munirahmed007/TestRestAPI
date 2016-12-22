@@ -21,7 +21,7 @@
     // Insert code here to initialize your application
     //test run.
     NSURL *url = [NSURL URLWithString:@"https://www.google.com.pk"];
-    self.client = [[CBHTTPClient new] initWithURL:url requestTimeout:100.0 delegate:self];
+    self.client = [[CBHTTPClient new] initWithURL:url requestTimeout:100.0 retryCount:5 delegate:self];
     [self.client performSelector:@selector(sendRequest:) withObject:@{@"gws_rd":@"ssl", @"q":@"test it now"} afterDelay:1.0];
 }
 
@@ -39,6 +39,7 @@
 - (void) requestTryAgain:(CBHTTPClient *)client
 {
     NSLog(@"try again");
+    [client retryRequest];
     
 }
 

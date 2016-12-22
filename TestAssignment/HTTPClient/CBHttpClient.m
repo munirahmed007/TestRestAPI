@@ -15,7 +15,8 @@
 @property         NSURL *requestURL;
 @property         NSInteger timeout;
 @property         CBURLRequestImp *requestImp;
-
+@property         NSDictionary *parameters;
+@property         NSInteger  retryCount;
 @end
 
 @implementation CBHTTPClient
@@ -54,19 +55,41 @@
     }
 }
 
+- (NSURL *) requestedURL
+{
+    return self.requestURL;
+}
+
 //execute request
 -(void)sendRequest:(NSDictionary *)params
 {
     self.requestImp = [CBURLRequestImp new];
     CBHTTPClient __weak *weakSelf = self;
+    self.parameters = params;
     
-    [self.requestImp performRequest:self.requestURL requestMethod:CBHTTPMethodGet requestParameters:params httpHeaderFields:@{}  timeoutInterval:self.timeout httpCallback:^(NSData *data, NSInteger responseCode, NSError *error) {
-        [weakSelf performOnRequestCompletionWithData:data statusCode:responseCode error:error];
-    }];
+    //decrement retry count
+    self.retryCount--;
+    
+    if (self.retryCount < 0)
+    {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:)]){
+            [self.delegate requestFailed:self];
+        }
+    }
+    else {
+        [self.requestImp performRequest:self.requestURL requestMethod:CBHTTPMethodGet requestParameters:params  httpHeaderFields:@{}  timeoutInterval:self.timeout httpCallback:^(NSData *data, NSInteger responseCode, NSError *error) {
+            [weakSelf performOnRequestCompletionWithData:data statusCode:responseCode error:error];
+        }];
+    }
+}
+
+-(void) retryRequest
+{
+    [self sendRequest:self.parameters];
 }
 
 //ctor
--(CBHTTPClient *) initWithURL:(NSURL *)url requestTimeout:(NSInteger)timeout delegate:(id<CBHTTPClientDelegate>) delegate
+-(CBHTTPClient *) initWithURL:(NSURL *)url requestTimeout:(NSInteger)timeout retryCount:(NSInteger)retry delegate:(id<CBHTTPClientDelegate>) delegate
 {
     self = [super init];
     
@@ -75,6 +98,7 @@
         self.requestURL = url;
         self.delegate = delegate;
         self.timeout = timeout;
+        self.retryCount = retry;
     }
     
     return self;

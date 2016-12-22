@@ -13,6 +13,7 @@
 @interface CBHTTPClient : NSObject
 
 -(void)sendRequest:(NSDictionary *)params;
--(CBHTTPClient *) initWithURL:(NSURL *)url requestTimeout:(NSInteger)timeout delegate:(id<CBHTTPClientDelegate>) delegate;
-
+-(CBHTTPClient *) initWithURL:(NSURL *)url requestTimeout:(NSInteger)timeout retryCount:(NSInteger)retry delegate:(id<CBHTTPClientDelegate>) delegate;
+-(NSURL *) requestedURL;
+-(void) retryRequest;
 @end
