@@ -30,6 +30,10 @@
     self.returnType = CBHTTPOtherError;
 }
 
+- (void) setReturnHttpOtherStatusCode
+{
+    self.returnType = CBHTTPOtherStatusCode;
+}
 - (void) setReturnHttpTimeout
 {
     self.returnType = CBHTTPTimeout;
@@ -40,11 +44,11 @@
 {
     if (self.returnType == CBHTTPOK)
     {
-        callback([NSData data], 200, nil);
+        callback([NSData data], @{}, 200, nil);
     }
     else if (self.returnType == CBHTTPServerError)
     {
-        callback([NSData data], 500, nil);
+        callback([NSData data], @{}, 500, nil);
     }
     else if (self.returnType == CBHTTPTimeout)
     {
@@ -56,7 +60,12 @@
         NSError *error = [NSError errorWithDomain:NSURLErrorDomain
                                              code:-1001
                                          userInfo:userInfo];
-        callback(nil, 0, error);
+        callback(nil, @{}, 0, error);
+    }
+    else if (self.returnType == CBHTTPOtherStatusCode)
+    {
+        callback([NSData data], @{}, 403, nil);
+        
     }
     else if (self.returnType == CBHTTPOtherError)
     {
@@ -68,7 +77,7 @@
         NSError *error = [NSError errorWithDomain:NSURLErrorDomain
                                              code:-1002
                                          userInfo:userInfo];
-        callback(nil, 0, error);
+        callback(nil, @{}, 0, error);
     }
 
 }

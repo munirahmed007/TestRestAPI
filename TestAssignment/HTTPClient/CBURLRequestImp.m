@@ -87,11 +87,13 @@
                                                       NSURLResponse *httpResponse,
                                                       NSError *error) {
                                       NSInteger code = 0;
+                                      NSDictionary *httpHeaders;
                                       
+                                      if (httpResponse) httpHeaders =  [(NSHTTPURLResponse *)httpResponse allHeaderFields];
                                       if (!error) {
                                           code = (long)[(NSHTTPURLResponse *)httpResponse statusCode];
                                       }
-                                      weakSelf.clientCallback(data, code, error);
+                                      weakSelf.clientCallback(data, httpHeaders, code, error);
                                   }];
     // Start the task.
     [task resume];

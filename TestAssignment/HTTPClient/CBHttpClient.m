@@ -39,6 +39,12 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
                 [self.delegate requestTryAgain:self];
             }
         }
+        else {
+                //when error code is different than 200 or 500
+            if (self.delegate && [self.delegate respondsToSelector:@selector(requestWithData:andStatusCode:)]){
+                [self.delegate requestWithData:data andStatusCode:responseCode];
+            }
+        }
     }
     else {
         //when there is an error.
@@ -88,7 +94,7 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
         }
     }
     else {
-        [self.executor performRequest:self.requestURL requestMethod:CBHTTPMethodGet requestParameters:params  httpHeaderFields:@{}  timeoutInterval:self.timeout httpCallback:^(NSData *data, NSInteger responseCode, NSError *error) {
+        [self.executor performRequest:self.requestURL requestMethod:CBHTTPMethodGet requestParameters:params  httpHeaderFields:@{}  timeoutInterval:self.timeout httpCallback:^(NSData *data, NSDictionary *httpHeader, NSInteger responseCode, NSError *error) {
             [weakSelf performOnRequestCompletionWithData:data statusCode:responseCode error:error];
         }];
     }

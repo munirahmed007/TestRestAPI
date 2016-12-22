@@ -16,6 +16,7 @@ typedef enum : NSUInteger {
     CBHTTPClient_500_Recv,
     CBHTTPClient_Timeout_Recv,
     CBHTTPClient_OtherError_Recv,
+    CBHTTPClient_OtherStatusCode_Recv,
     CBHTTPClient_noneError_Recv,
 } CBHttpClientErrorTypes;
 
@@ -44,6 +45,25 @@ typedef void (^TestCallback)();
 {
     self.callback = cb;
     [self.client sendRequest:@{} withHttpExecutor:executer];
+}
+
+
+- (void) testClientHttp_other_StatusCode
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"testClientHttp_error_Unknown"];
+    self.errorType = CBHTTPClient_noneError_Recv;
+    DummyHttpExecutor *execute = [DummyHttpExecutor new];
+    [execute setReturnHttpOtherStatusCode];
+    
+    self.expectedError = CBHTTPClient_OtherStatusCode_Recv;
+    
+    CBHTTPClientTests __weak *weakSelf = self;
+    
+    [self performAsyncOperationWithExecutor:execute Callback:^{
+        XCTAssertEqual(weakSelf.errorType, weakSelf.expectedError);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:15.0 handler:nil];
 }
 
 - (void) testClientHttp_error_others
@@ -147,6 +167,12 @@ typedef void (^TestCallback)();
     self.errorType = CBHTTPClient_Timeout_Recv ;
     self.callback();
 }
+- (void) requestWithData:(NSData *)data andStatusCode:(NSInteger)responseCode
+{
+    self.errorType = CBHTTPClient_OtherStatusCode_Recv;
+    self.callback();
+}
+
 
 
 @end

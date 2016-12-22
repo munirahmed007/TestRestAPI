@@ -24,7 +24,7 @@ typedef enum : NSUInteger {
 
 
 //callback typedef
-typedef void (^CBHttpClientCallback)(NSData *data, NSInteger responseCode, NSError *error);
+typedef void (^CBHttpClientCallback)(NSData *data, NSDictionary *responseHeaders, NSInteger responseCode, NSError *error);
 
 @protocol CBURLRequestProtocol <NSObject>
 

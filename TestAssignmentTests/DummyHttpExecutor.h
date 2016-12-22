@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
     CBHTTPServerError,
     CBHTTPTimeout,
     CBHTTPOtherError,
+    CBHTTPOtherStatusCode,
 } CBReturnType;
 
 @interface DummyHttpExecutor : NSObject<CBURLRequestProtocol>
@@ -23,5 +24,6 @@ typedef enum : NSUInteger {
 - (void) setReturnHttpInternalServerError;
 - (void) setReturnHttpTimeout;
 - (void) setReturnHttpOtherErrors;
+- (void) setReturnHttpOtherStatusCode;
 
 @end
