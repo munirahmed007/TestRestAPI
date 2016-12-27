@@ -237,7 +237,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
             endingLineNumber = "161"
-            landmarkName = "-requestFailed:error:"
+            landmarkName = "-requestFailed:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -650,7 +650,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
             endingLineNumber = "172"
-            landmarkName = "-requestWithData:andStatusCode:"
+            landmarkName = "-requestCompletedWithClient:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -668,6 +668,102 @@
             endingLineNumber = "67"
             landmarkName = "-performRequest:requestMethod:requestParameters:httpHeaderFields:timeoutInterval:httpCallback:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestAssignment/HTTPClient/CBHttpClient.m"
+            timestampString = "504529485.616408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "@implementation CBHTTPClient"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CBHTTPClient .cxx_destruct]"
+                  moduleName = "TestAssignment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jenkins/Projects/restapi/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
+                  timestampString = "504529487.162305"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CBHTTPClient .cxx_destruct]"
+                  moduleName = "TestAssignmentTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jenkins/Projects/restapi/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
+                  timestampString = "504529487.237317"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestAssignment/HTTPClient/CBHttpClient.m"
+            timestampString = "504529485.616408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "@implementation CBHTTPClient"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CBHTTPClient performOnRequestCompletionWithData:statusCode:error:]"
+                  moduleName = "TestAssignment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jenkins/Projects/restapi/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
+                  timestampString = "504529487.191754"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "91">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CBHTTPClient performOnRequestCompletionWithData:statusCode:error:]"
+                  moduleName = "TestAssignmentTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jenkins/Projects/restapi/TestRestAPI/TestAssignment/HTTPClient/CBHttpClient.m"
+                  timestampString = "504529487.240594"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "91">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

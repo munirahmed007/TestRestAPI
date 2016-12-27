@@ -15,8 +15,8 @@
 @property         NSURL *requestURL;
 @property         NSInteger timeout;
 @property         id<CBURLRequestProtocol> executor;
-@property         NSDictionary *parameters;
 @property         NSInteger  retryCount;
+
 @end
 
 NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
@@ -28,10 +28,11 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
 - (void) performOnRequestCompletionWithData:(NSData *)data statusCode:(NSInteger)responseCode error:(NSError *)error
 {
     //if no error, call delegate for 200 or 500
+    
     if (!error){
         if (responseCode == CBHTTPResponseCode_200) {
             if (self.delegate && [self.delegate respondsToSelector:@selector(requestOK:)]){
-                [self.delegate requestOK:data];
+                [self.delegate requestOK:self];
             }
         }
         else if (responseCode == CBHTTPResponseCode_500) {
@@ -41,8 +42,8 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
         }
         else {
                 //when error code is different than 200 or 500
-            if (self.delegate && [self.delegate respondsToSelector:@selector(requestWithData:andStatusCode:)]){
-                [self.delegate requestWithData:data andStatusCode:responseCode];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(requestCompleted:)]){
+                [self.delegate requestCompleted:self];
             }
         }
     }
@@ -55,12 +56,10 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
             }
         }
         else {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:error:)]){
-                [self.delegate requestFailed:self error:error];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:)]){
+                [self.delegate requestFailed:self];
             }
-            
         }
-        
     }
 }
 
@@ -73,7 +72,7 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
 -(void)sendRequest:(NSDictionary *)params withHttpExecutor:(id<CBURLRequestProtocol>)httpExecutor;
 {
     CBHTTPClient __weak *weakSelf = self;
-    self.parameters = params;
+    self.requestParameters = params;
     self.executor = httpExecutor;
     
     //decrement retry count
@@ -81,20 +80,26 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
     
     if (self.retryCount < 0)
     {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:error:)]){
+        if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:)]){
             NSDictionary *userInfo = @{
                                        NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil),
                                        NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"CBHTTPClient consumed all retries.", nil),
                                        NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Operation was unsuccessful", nil)
                                        };
-            NSError *error = [NSError errorWithDomain:CBHTTPClientErrorDomain
+            self.error = [NSError errorWithDomain:CBHTTPClientErrorDomain
                                                  code:-57
                                              userInfo:userInfo];
-            [self.delegate requestFailed:self error:error];
+            [self.delegate requestFailed:self];
         }
     }
     else {
         [self.executor performRequest:self.requestURL requestMethod:CBHTTPMethodGet requestParameters:params  httpHeaderFields:@{}  timeoutInterval:self.timeout httpCallback:^(NSData *data, NSDictionary *httpHeader, NSInteger responseCode, NSError *error) {
+            
+            self.httpResponesHeaderFields = httpHeader;
+            self.data = data;
+            self.statusCode = responseCode;
+            self.error = error;
+            
             [weakSelf performOnRequestCompletionWithData:data statusCode:responseCode error:error];
         }];
     }
@@ -102,7 +107,7 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
 
 -(void) retryRequest
 {
-    [self sendRequest:self.parameters withHttpExecutor:self.executor];
+    [self sendRequest:self.requestParameters withHttpExecutor:self.executor];
 }
 
 //ctor

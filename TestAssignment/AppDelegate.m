@@ -32,32 +32,34 @@
 }
 
 
-- (void) requestOK:(NSData *)data
+- (void) requestOK:(CBHTTPClient *)client
 {
-    NSLog(@"recv data");
+    NSLog(@"recv data of length %ld", client.data.length);
 }
 
 - (void) requestTryAgain:(CBHTTPClient *)client
 {
-    NSLog(@"try again");
+    NSLog(@"try again for status code %ld", client.statusCode);
     [client retryRequest];
     
 }
 
-- (void) requestFailed:(CBHTTPClient *)client error:(NSError *)error
+- (void) requestCompleted:(CBHTTPClient *)client
 {
-    NSLog(@"request failed");
+    NSLog(@"request completed with status code %ld", client.statusCode);
+    
+}
+
+- (void) requestFailed:(CBHTTPClient *)client
+{
+    NSLog(@"request failed for error %@", client.error);
     
 }
 
 - (void) requestTimeout:(CBHTTPClient *)client
 {
-    NSLog(@"timeout");
+    NSLog(@"timeout %@", client.error);
 }
 
-- (void) requestWithData:(NSData *)data andStatusCode:(NSInteger)responseCode
-{
-    
-}
 
 @end

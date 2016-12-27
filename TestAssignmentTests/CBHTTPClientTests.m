@@ -144,7 +144,7 @@ typedef void (^TestCallback)();
 #pragma -- CBClientDelegate --
 
 
-- (void) requestOK:(NSData *)data
+- (void) requestOK:(CBHTTPClient *)client
 {
     self.errorType = CBHTTPClient_200_Recv;
     self.callback();
@@ -156,7 +156,7 @@ typedef void (^TestCallback)();
     self.callback();
 }
 
-- (void) requestFailed:(CBHTTPClient *)client error:(NSError *)error
+- (void) requestFailed:(CBHTTPClient *)client
 {
     self.errorType = CBHTTPClient_OtherError_Recv;
     self.callback();
@@ -167,7 +167,7 @@ typedef void (^TestCallback)();
     self.errorType = CBHTTPClient_Timeout_Recv ;
     self.callback();
 }
-- (void) requestWithData:(NSData *)data andStatusCode:(NSInteger)responseCode
+- (void) requestCompleted:(CBHTTPClient *)client
 {
     self.errorType = CBHTTPClient_OtherStatusCode_Recv;
     self.callback();
