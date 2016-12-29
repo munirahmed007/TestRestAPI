@@ -56,13 +56,11 @@
     }
 }
 
-//execute API request
-- (void) performRequest:(NSURL *)url requestMethod:(CBHTTPMethod)httpMethod requestParameters:(NSDictionary *)parameters httpHeaderFields:(NSDictionary *)httpHeaders timeoutInterval:(NSInteger)timeout httpCallback:(CBHttpClientCallback) callback
+/* Prepares an URLRequest object */
+- (NSMutableURLRequest *) prepareRequestForURL:(NSURL *)url httpMethod:(CBHTTPMethod)httpMethod requestParameters:(NSDictionary *)parameters httpHeaderFields:(NSDictionary *)httpHeaders timeoutInterval:(NSInteger)timeout
 {
-    NSMutableURLRequest *request;
-    NSData              *httpMsgBody;
-    CBURLRequestImp __weak *weakSelf = self;
-    
+    NSData *httpMsgBody;
+
     if (httpMethod == CBHTTPMethodGet)
     {
         url = [self urlForGetMethod:url withQueryParameters:parameters];
@@ -75,8 +73,20 @@
         httpHeaders = [NSDictionary dictionaryWithDictionary:headersCopy];
     }
     
-    request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:timeout];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:timeout];
+    
     [self addHttpHeaders:httpHeaders toRequest:request];
+
+    return request;
+}
+
+//execute API request
+- (void) performRequest:(NSURL *)url requestMethod:(CBHTTPMethod)httpMethod requestParameters:(NSDictionary *)parameters httpHeaderFields:(NSDictionary *)httpHeaders timeoutInterval:(NSInteger)timeout httpCallback:(CBHttpClientCallback) callback
+{
+    NSMutableURLRequest *request;
+    CBURLRequestImp __weak *weakSelf = self;
+    
+    request = [self prepareRequestForURL:url httpMethod:httpMethod requestParameters:parameters httpHeaderFields:httpHeaders timeoutInterval:timeout];
    
     self.clientCallback = callback;
     

@@ -68,10 +68,39 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
     return self.requestURL;
 }
 
+- (void) postRequestFailureError
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:)]){
+        NSDictionary *userInfo = @{
+                                   NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil),
+                                   NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"CBHTTPClient consumed all retries.", nil),
+                                   NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Operation was unsuccessful", nil)
+                                   };
+        self.error = [NSError errorWithDomain:CBHTTPClientErrorDomain
+                                         code:-57
+                                     userInfo:userInfo];
+        [self.delegate requestFailed:self];
+    }
+}
+
+- (void) executeRequest
+{
+    CBHTTPClient __weak *weakSelf = self;
+
+    [self.executor performRequest:self.requestURL requestMethod:CBHTTPMethodGet requestParameters:self.requestParameters  httpHeaderFields:@{}  timeoutInterval:self.timeout httpCallback:^(NSData *data, NSDictionary *httpHeader, NSInteger responseCode, NSError *error) {
+        
+        self.httpResponesHeaderFields = httpHeader;
+        self.data = data;
+        self.statusCode = responseCode;
+        self.error = error;
+        
+        [weakSelf performOnRequestCompletionWithData:data statusCode:responseCode error:error];
+    }];
+}
+
 //execute request
 -(void)sendRequest:(NSDictionary *)params withHttpExecutor:(id<CBURLRequestProtocol>)httpExecutor;
 {
-    CBHTTPClient __weak *weakSelf = self;
     self.requestParameters = params;
     self.executor = httpExecutor;
     
@@ -80,28 +109,10 @@ NSString *CBHTTPClientErrorDomain = @"CBHTTPClientErrorDomain";
     
     if (self.retryCount < 0)
     {
-        if (self.delegate && [self.delegate respondsToSelector:@selector(requestFailed:)]){
-            NSDictionary *userInfo = @{
-                                       NSLocalizedDescriptionKey: NSLocalizedString(@"Operation was unsuccessful.", nil),
-                                       NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"CBHTTPClient consumed all retries.", nil),
-                                       NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Operation was unsuccessful", nil)
-                                       };
-            self.error = [NSError errorWithDomain:CBHTTPClientErrorDomain
-                                                 code:-57
-                                             userInfo:userInfo];
-            [self.delegate requestFailed:self];
-        }
+        [self postRequestFailureError];
     }
     else {
-        [self.executor performRequest:self.requestURL requestMethod:CBHTTPMethodGet requestParameters:params  httpHeaderFields:@{}  timeoutInterval:self.timeout httpCallback:^(NSData *data, NSDictionary *httpHeader, NSInteger responseCode, NSError *error) {
-            
-            self.httpResponesHeaderFields = httpHeader;
-            self.data = data;
-            self.statusCode = responseCode;
-            self.error = error;
-            
-            [weakSelf performOnRequestCompletionWithData:data statusCode:responseCode error:error];
-        }];
+        [self executeRequest];
     }
 }
 
